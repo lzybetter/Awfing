@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Awfing</string>
+    <string name="title_activity_test_view">TestView</string>
+    <string name="aircraft">飞机图介</string>
+    <string name="weapons">鹰之利爪</string>
+    <string name="knowledge">航空百科</string>
+    <string name="history">战史战例</string>
+    <string name="picture">名机靓影</string>
+
+</resources>

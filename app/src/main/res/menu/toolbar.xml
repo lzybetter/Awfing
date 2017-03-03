@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/Btn_Update"
+        android:icon="@drawable/ic_update"
+        android:title="Update"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/Btn_Random"
+        android:icon="@drawable/ic_shuffle"
+        android:title="Random"
+        app:showAsAction="always">
+    </item>
+
+</menu>

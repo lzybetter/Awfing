@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="主页"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_aircraft"
+            android:icon="@drawable/ic_aircraft"
+            android:title="飞机图介"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_weapons"
+            android:icon="@drawable/ic_weapon"
+            android:title="鹰之利爪"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_knowledge"
+            android:icon="@drawable/ic_knowledge"
+            android:title="航空百科"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history"
+            android:title="战史战例"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_picture"
+            android:icon="@drawable/ic_picture"
+            android:title="名机靓影"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_settings"
+            android:title="设置"
+            android:textColor="#FFF"/>
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_exit"
+            android:title="退出"
+            android:textColor="#FFF"/>
+    </group>
+
+</menu>
