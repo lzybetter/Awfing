@@ -3,6 +3,7 @@
     android:orientation="horizontal" 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/clockBackground"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp">
 
@@ -15,6 +16,7 @@
 
     <LinearLayout
         android:orientation="vertical"
+        android:background="?attr/clockBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -23,12 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
+            android:background="?attr/clockBackground"
+            android:textColor="?attr/clockTextColor"
             android:layout_marginBottom="2dp"/>
         <TextView
             android:id="@+id/list_sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10sp"
+            android:background="?attr/clockBackground"
+            android:textColor="?attr/clockTextColor"
             android:layout_marginTop="2dp"/>
 
     </LinearLayout>

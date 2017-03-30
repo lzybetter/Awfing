@@ -56,7 +56,9 @@ public class HttpGet {
                 } catch (Exception e) {
                     listener.onError(e);
                 }finally {
-                    connection.disconnect();
+                    if(connection != null){
+                        connection.disconnect();
+                    }
                 }
             }
         }).start();

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/clockBackground"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -20,6 +21,19 @@
         android:layout_margin="10dp"
         android:layout_below="@id/setting_title"
         android:text="无图模式"
+        android:background="?attr/clockBackground"
+        android:textColor="?attr/clockTextColor"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+    <CheckBox
+        android:id="@+id/isDayorNight_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/isLoadImage_check"
+        android:text="夜间模式"
+        android:background="?attr/clockBackground"
+        android:textColor="?attr/clockTextColor"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
     <Button
@@ -27,8 +41,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FFF"
         android:text="关于本软件"
+        android:background="?attr/clockBackground"
+        android:textColor="?attr/clockTextColor"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
 </RelativeLayout>

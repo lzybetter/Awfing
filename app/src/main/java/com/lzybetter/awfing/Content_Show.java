@@ -60,6 +60,14 @@ public class Content_Show extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences pref = getSharedPreferences(MyApplication.SETTING_NAME,MODE_PRIVATE);
+        boolean isDayorNight = pref.getBoolean(MyApplication.ISDAYORNIGHT,false);
+        //true代表夜间，false代表白天
+        if(isDayorNight){
+            setTheme(R.style.NightTheme);
+        }else{
+            setTheme(R.style.DayTheme);
+        }
         setContentView(R.layout.content__show);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.showPageTitle);

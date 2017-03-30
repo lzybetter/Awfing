@@ -50,6 +50,14 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences pref = getSharedPreferences(MyApplication.SETTING_NAME,MODE_PRIVATE);
+        boolean isDayorNight = pref.getBoolean(MyApplication.ISDAYORNIGHT,false);
+        //true代表夜间，false代表白天
+        if(isDayorNight){
+            setTheme(R.style.NightTheme);
+        }else{
+            setTheme(R.style.DayTheme);
+        }
         setContentView(R.layout.activity_main);
 
         getPermission();
@@ -74,7 +82,6 @@ public class MainActivity extends BaseActivity {
 
     private void init() {
         slider = (SliderLayout)findViewById(R.id.slider);
-        indicator = (PagerIndicator)findViewById(R.id.ind_pager);
         content = (ListView)findViewById(R.id.contentList);
 
         initDrawerLayout();
@@ -139,7 +146,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.nav_setting:
                         Intent setting_Intent = new Intent(MainActivity.this,Setting.class);
+                        setting_Intent.putExtra("startActivity","Main");
                         startActivity(setting_Intent);
+                        finish();
                         break;
                     case R.id.nav_exit:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -202,7 +211,6 @@ public class MainActivity extends BaseActivity {
                 }
                 slider.setCustomAnimation(new DescriptionAnimation());
                 slider.setDuration(3500);
-                slider.setCustomIndicator(indicator);
             }
         });
     }

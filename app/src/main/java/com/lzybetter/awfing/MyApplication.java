@@ -23,6 +23,7 @@ public class MyApplication extends Application {
 
     public static final String AFWING = "http://www.afwing.com";
     public static final String ISIMAGELOAD = "isImageLoad";
+    public static final String ISDAYORNIGHT = "isDayorNight";
     public static final String SETTING_NAME = "setting";
 
     private int maxMemory = (int) Runtime.getRuntime().maxMemory();

@@ -2,6 +2,7 @@ package com.lzybetter.awfing;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -43,6 +44,14 @@ public class Choose_List extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences pref = getSharedPreferences(MyApplication.SETTING_NAME,MODE_PRIVATE);
+        boolean isDayorNight = pref.getBoolean(MyApplication.ISDAYORNIGHT,false);
+        //true代表夜间，false代表白天
+        if(isDayorNight){
+            setTheme(R.style.NightTheme);
+        }else{
+            setTheme(R.style.DayTheme);
+        }
         setContentView(R.layout.choose__list);
 
         Intent intent = getIntent();
@@ -136,7 +145,11 @@ public class Choose_List extends BaseActivity {
                         break;
                     case R.id.nav_setting:
                         Intent setting_Intent = new Intent(Choose_List.this,Setting.class);
+                        setting_Intent.putExtra("startActivity","List");
+                        setting_Intent.putExtra("address",address_page);
+                        setting_Intent.putExtra("title",title_page);
                         startActivity(setting_Intent);
+                        finish();
                         break;
                     case R.id.nav_exit:
                         AlertDialog.Builder builder = new AlertDialog.Builder(Choose_List.this);

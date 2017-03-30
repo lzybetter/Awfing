@@ -46,11 +46,13 @@
         android:id="@+id/content_nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/clockBackground"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:id="@+id/content_linearLayout"
             android:orientation="vertical"
+            android:background="?attr/clockBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -60,13 +62,15 @@
                 android:layout_height="wrap_content"
                 android:background="#3366cc"
                 android:textSize="25sp"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/clockTextColor"
                 android:layout_marginBottom="2dp"/>
 
             <TextView
                 android:id="@+id/content_show"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/clockTextColor"
+                android:background="?attr/clockBackground"
                 android:scrollbars="vertical"
                 android:textSize="20sp"/>
         </LinearLayout>

@@ -18,10 +18,19 @@ public class Setting extends BaseActivity {
 
     private boolean isSaved = true;
     private CheckBox isLoadImage_check;
+    private CheckBox isDayorNight_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences pref = getSharedPreferences(MyApplication.SETTING_NAME,MODE_PRIVATE);
+        boolean isDayorNight = pref.getBoolean(MyApplication.ISDAYORNIGHT,false);
+        //true代表夜间，false代表白天
+        if(isDayorNight){
+            setTheme(R.style.NightTheme);
+        }else{
+            setTheme(R.style.DayTheme);
+        }
         setContentView(R.layout.activity_setting);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.setting_title);
@@ -34,12 +43,16 @@ public class Setting extends BaseActivity {
         Button aboutButton = (Button)findViewById(R.id.about_btn);
         aboutButton.setOnClickListener(new CheckBoxListener());
 
-        SharedPreferences pref = getSharedPreferences(MyApplication.SETTING_NAME,MODE_PRIVATE);
+
         boolean isLoadImage = pref.getBoolean(MyApplication.ISIMAGELOAD,true);
 
         isLoadImage_check = (CheckBox)findViewById(R.id.isLoadImage_check);
         isLoadImage_check.setChecked(!isLoadImage);
         isLoadImage_check.setOnClickListener(new CheckBoxListener());
+
+        isDayorNight_check = (CheckBox)findViewById(R.id.isDayorNight_check);
+        isDayorNight_check.setChecked(isDayorNight);
+        isDayorNight_check.setOnClickListener(new CheckBoxListener());
     }
 
     class CheckBoxListener implements View.OnClickListener{
@@ -48,6 +61,9 @@ public class Setting extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.isLoadImage_check:
+                    isSaved = false;
+                    break;
+                case R.id.isDayorNight_check:
                     isSaved = false;
                     break;
                 case R.id.about_btn:
@@ -73,11 +89,12 @@ public class Setting extends BaseActivity {
                 if(!isSaved){
                     SharedPreferences.Editor editor = getSharedPreferences(MyApplication.SETTING_NAME
                             ,MODE_PRIVATE).edit();
-                    editor.remove(MyApplication.ISIMAGELOAD);
                     editor.putBoolean(MyApplication.ISIMAGELOAD,!isLoadImage_check.isChecked());
+                    editor.putBoolean(MyApplication.ISDAYORNIGHT,isDayorNight_check.isChecked());
                     editor.apply();
                     Toast.makeText(this,"保存成功",Toast.LENGTH_SHORT).show();
                     isSaved = true;
+                    goBack();
                 }
                 break;
             case android.R.id.home:
@@ -98,7 +115,7 @@ public class Setting extends BaseActivity {
             builder.setPositiveButton("是，放弃", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Setting.super.onBackPressed();
+                    goBack();
                 }
             });
             builder.setNegativeButton("不", new DialogInterface.OnClickListener() {
@@ -108,8 +125,30 @@ public class Setting extends BaseActivity {
             });
             builder.show();
         }else{
-            Setting.super.onBackPressed();
+            goBack();
         }
     }
 
+    private void goBack(){
+        Intent intent = getIntent();
+        String startClass = intent.getStringExtra("startActivity");
+        switch (startClass){
+            case "Main":
+                Intent back_intent_main = new Intent(this,MainActivity.class);
+                startActivity(back_intent_main);
+                finish();
+                break;
+            case "List":
+                Intent back_intent_List = new Intent(this,Choose_List.class);
+                String address_page = intent.getStringExtra("address");
+                String title_page = intent.getStringExtra("title");
+                back_intent_List.putExtra("address",address_page);
+                back_intent_List.putExtra("title",title_page);
+                startActivity(back_intent_List);
+                finish();
+                break;
+            default:
+                break;
+        }
+    }
 }
