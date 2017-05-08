@@ -2,4 +2,5 @@
 <resources>
     <attr name="clockBackground" format="color"/>
     <attr name="clockTextColor" format="color"/>
+    <attr name="titleColor" format="color"/>
 </resources>

@@ -64,9 +64,9 @@ public class Content_Show extends BaseActivity {
         boolean isDayorNight = pref.getBoolean(MyApplication.ISDAYORNIGHT,false);
         //true代表夜间，false代表白天
         if(isDayorNight){
-            setTheme(R.style.NightTheme);
+            setTheme(R.style.ContentShowNight);
         }else{
-            setTheme(R.style.DayTheme);
+            setTheme(R.style.ContentShowDay);
         }
         setContentView(R.layout.content__show);
 
