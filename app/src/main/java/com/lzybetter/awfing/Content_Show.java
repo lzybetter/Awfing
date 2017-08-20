@@ -273,6 +273,9 @@ public class Content_Show extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+//            case R.id.content_all:
+//
+//                break;
             case R.id.content_share:
                 Intent intent = getIntent();
                 String title = intent.getStringExtra("title");

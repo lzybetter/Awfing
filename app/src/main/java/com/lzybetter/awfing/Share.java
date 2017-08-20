@@ -29,7 +29,7 @@ import static com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req.WXSceneTimelin
 public class Share extends BaseActivity {
 
     private CircleImageView share_weixin,share_pengyouquan;
-    private CircleImageView share_qq, share_kongjian;
+    private CircleImageView share_qq, share_kongjian,share_more;
 
     private String title,link,sub,imgAddress;
 
@@ -53,11 +53,13 @@ public class Share extends BaseActivity {
         share_pengyouquan = (CircleImageView)findViewById(R.id.share_pengyouquan);
         share_qq = (CircleImageView)findViewById(R.id.share_qq);
         share_kongjian = (CircleImageView)findViewById(R.id.share_kongjian);
+        share_more = (CircleImageView)findViewById(R.id.share_more);
 
         share_weixin.setOnClickListener(new ClickListener());
         share_pengyouquan.setOnClickListener(new ClickListener());
         share_qq.setOnClickListener(new ClickListener());
         share_kongjian.setOnClickListener(new ClickListener());
+        share_more.setOnClickListener(new ClickListener());
 
     }
 
@@ -86,6 +88,16 @@ public class Share extends BaseActivity {
         req.message = message;
         req.scene = type;
         api.sendReq(req);
+    }
+
+    private void shareMore(){
+        Intent moreShare = new Intent();
+        moreShare.setAction(Intent.ACTION_SEND);
+        moreShare.setType("text/plain");
+        moreShare.putExtra(Intent.EXTRA_SUBJECT,title);
+        moreShare.putExtra(Intent.EXTRA_TEXT,link);
+        moreShare = Intent.createChooser(moreShare,"分享到...");
+        startActivity(moreShare);
     }
 
     private String buildTransaction(String type) {
@@ -147,6 +159,8 @@ public class Share extends BaseActivity {
                 case R.id.share_kongjian:
                     shareQzone();
                     break;
+                case R.id.share_more:
+                    shareMore();
                 default:
                     break;
             }

@@ -20,15 +20,15 @@
 
         <LinearLayout
             android:id="@+id/share_choose"
-            android:layout_width="255dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:paddingLeft="2dp"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 >
 
@@ -36,7 +36,8 @@
                     android:id="@+id/share_weixin"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/weixin" />
+                    android:src="@drawable/weixin"
+                    android:layout_gravity="center_horizontal"/>
 
                 <TextView
                     android:text="微信好友"
@@ -48,9 +49,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
@@ -58,7 +58,7 @@
                     android:id="@+id/share_pengyouquan"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:src="@drawable/pengyouquan" />
 
                 <TextView
@@ -72,9 +72,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
@@ -82,7 +81,7 @@
                     android:id="@+id/share_qq"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center_horizontal"
                     android:src="@drawable/qq" />
 
                 <TextView
@@ -96,9 +95,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
@@ -106,10 +104,35 @@
                     android:id="@+id/share_kongjian"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/kongjian" />
+                    android:src="@drawable/kongjian"
+                    android:layout_gravity="center_horizontal"/>
 
                 <TextView
                     android:text="QQ空间"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:paddingRight="2dp"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/share_more"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/more" />
+
+                <TextView
+                    android:text="更多"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
