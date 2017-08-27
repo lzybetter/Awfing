@@ -56,6 +56,8 @@ public class Content_Show extends BaseActivity {
     private SharedPreferences pref = MyApplication.getContext().getSharedPreferences(MyApplication.SETTING_NAME,
             MODE_PRIVATE);
     private boolean isLoadImage = pref.getBoolean(MyApplication.ISIMAGELOAD,true);
+    private boolean noPicSmart = pref.getBoolean(MyApplication.NOPICSMART,false);
+    private boolean loadImage = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,25 @@ public class Content_Show extends BaseActivity {
         String link = intent.getStringExtra("link");
         String imgAddress = intent.getStringExtra("imgAddress");
 
-        if(isLoadImage){
+        if(!isLoadImage){
+            if(noPicSmart){
+                int netState = NetState.getNetState();
+                switch (netState){
+                    case MyApplication.WIFI_CONNECT:
+                        loadImage = true;
+                        break;
+                    case MyApplication.MONET_CONNECT:
+                        loadImage = false;
+                        break;
+                    default:
+                        break;
+                }
+            }else {
+                loadImage = false;
+            }
+        }
+
+        if(loadImage){
             AsynImageLoader asynImageLoader = new AsynImageLoader();
             title_img.setTag(imgAddress);
             AsynImageLoader.AsynDownLoadTask asynDownLoadTask = asynImageLoader.new AsynDownLoadTask(title_img,
@@ -273,9 +293,6 @@ public class Content_Show extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-//            case R.id.content_all:
-//
-//                break;
             case R.id.content_share:
                 Intent intent = getIntent();
                 String title = intent.getStringExtra("title");

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/fenlei">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
@@ -31,16 +32,21 @@
             android:icon="@drawable/ic_picture"
             android:title="名机靓影"
             android:textColor="#FFF"/>
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_settings"
-            android:title="设置"
-            android:textColor="#FFF"/>
-        <item
-            android:id="@+id/nav_exit"
-            android:icon="@drawable/ic_exit"
-            android:title="退出"
-            android:textColor="#FFF"/>
     </group>
+    <group android:id="@+id/setting">
+        <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_settings"
+        android:title="设置"
+        android:textColor="#FFF"/>
+    </group>
+    <group android:id="@+id/exit">
+        <item
+        android:id="@+id/nav_exit"
+        android:icon="@drawable/ic_exit"
+        android:title="退出"
+        android:textColor="#FFF"/>
+    </group>
+
 
 </menu>

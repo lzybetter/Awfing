@@ -25,6 +25,11 @@ public class MyApplication extends Application {
     public static final String ISIMAGELOAD = "isImageLoad";
     public static final String ISDAYORNIGHT = "isDayorNight";
     public static final String SETTING_NAME = "setting";
+    public static final String NOPICSMART = "nopicsmart";
+
+    public static final int NO_CONNECT = 0;//网络连接状态，0代表没有网，1代表流WIFI，2代表流量
+    public static final int WIFI_CONNECT = 1;
+    public static final int MONET_CONNECT = 2;
 
     private int maxMemory = (int) Runtime.getRuntime().maxMemory();
     private int cacheSizes = maxMemory/5;

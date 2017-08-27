@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<item-->
-        <!--android:id="@+id/content_all"-->
-        <!--android:icon="@drawable/ic_description"-->
-        <!--android:title="阅读全文"-->
-        <!--app:showAsAction="ifRoom"></item>-->
-
     <item
         android:id="@+id/content_share"
         android:icon="@drawable/ic_share"

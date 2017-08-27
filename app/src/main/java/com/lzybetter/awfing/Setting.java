@@ -17,8 +17,10 @@ import android.widget.Toast;
 public class Setting extends BaseActivity {
 
     private boolean isSaved = true;
+    private boolean noPicSmart = false;
     private CheckBox isLoadImage_check;
     private CheckBox isDayorNight_check;
+    private CheckBox noPicSmart_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +47,20 @@ public class Setting extends BaseActivity {
 
 
         boolean isLoadImage = pref.getBoolean(MyApplication.ISIMAGELOAD,true);
+        noPicSmart = pref.getBoolean(MyApplication.NOPICSMART,false);
 
         isLoadImage_check = (CheckBox)findViewById(R.id.isLoadImage_check);
         isLoadImage_check.setChecked(!isLoadImage);
         isLoadImage_check.setOnClickListener(new CheckBoxListener());
+
+        noPicSmart_check = (CheckBox)findViewById(R.id.noPictureSmart_check);
+        noPicSmart_check.setOnClickListener(new CheckBoxListener());
+        if(isLoadImage_check.isChecked()){
+            noPicSmart_check.setVisibility(View.VISIBLE);
+            noPicSmart_check.setChecked(noPicSmart);
+        }else {
+            noPicSmart_check.setVisibility(View.GONE);
+        }
 
         isDayorNight_check = (CheckBox)findViewById(R.id.isDayorNight_check);
         isDayorNight_check.setChecked(isDayorNight);
@@ -59,8 +71,18 @@ public class Setting extends BaseActivity {
 
         @Override
         public void onClick(View v) {
+
             switch (v.getId()){
                 case R.id.isLoadImage_check:
+                    isSaved = false;
+                    if(isLoadImage_check.isChecked()){
+                        noPicSmart_check.setVisibility(View.VISIBLE);
+                        noPicSmart_check.setChecked(noPicSmart);
+                    }else {
+                        noPicSmart_check.setVisibility(View.GONE);
+                    }
+                    break;
+                case R.id.noPictureSmart_check:
                     isSaved = false;
                     break;
                 case R.id.isDayorNight_check:
@@ -91,11 +113,20 @@ public class Setting extends BaseActivity {
                             ,MODE_PRIVATE).edit();
                     editor.putBoolean(MyApplication.ISIMAGELOAD,!isLoadImage_check.isChecked());
                     editor.putBoolean(MyApplication.ISDAYORNIGHT,isDayorNight_check.isChecked());
+                    switch (noPicSmart_check.getVisibility()){
+                        case View.VISIBLE:
+                            editor.putBoolean(MyApplication.NOPICSMART,noPicSmart_check.isChecked());
+                            break;
+                        case View.GONE:
+                        default:
+                            editor.putBoolean(MyApplication.NOPICSMART,false);
+                            break;
+                    }
                     editor.apply();
                     Toast.makeText(this,"保存成功",Toast.LENGTH_SHORT).show();
                     isSaved = true;
-                    goBack();
                 }
+                goBack();
                 break;
             case android.R.id.home:
                 onBackPressed();

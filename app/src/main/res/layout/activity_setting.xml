@@ -26,11 +26,23 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
     <CheckBox
-        android:id="@+id/isDayorNight_check"
+        android:id="@+id/noPictureSmart_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@id/isLoadImage_check"
+        android:text="智能无图"
+        android:background="?attr/clockBackground"
+        android:textColor="?attr/clockTextColor"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:visibility="gone"/>
+
+    <CheckBox
+        android:id="@+id/isDayorNight_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/noPictureSmart_check"
         android:text="夜间模式"
         android:background="?attr/clockBackground"
         android:textColor="?attr/clockTextColor"

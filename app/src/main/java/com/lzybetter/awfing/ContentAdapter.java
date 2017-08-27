@@ -66,7 +66,27 @@ public class ContentAdapter extends ArrayAdapter<ListContent> {
                 SharedPreferences pref = MyApplication.getContext().getSharedPreferences(MyApplication.SETTING_NAME
                         ,Context.MODE_PRIVATE);
                 boolean isLoadImage = pref.getBoolean(MyApplication.ISIMAGELOAD,true);
-                if(isLoadImage){
+                boolean noPicSmart = pref.getBoolean(MyApplication.NOPICSMART,false);
+                boolean loadImage = true;
+
+                if(!isLoadImage){
+                    if(noPicSmart){
+                        int netState = NetState.getNetState();
+                        switch (netState){
+                            case MyApplication.WIFI_CONNECT:
+                                loadImage = true;
+                                break;
+                            case MyApplication.MONET_CONNECT:
+                                loadImage = false;
+                                break;
+                            default:
+                                break;
+                        }
+                    }else {
+                        loadImage = false;
+                    }
+                }
+                if(loadImage){
                     AsynImageLoader.AsynDownLoadTask asynDownLoadTask = asynImageLoader.new AsynDownLoadTask(viewHolder.list_img,
                             listContent.getImgSrc(), MyApplication.getmMemoryCaches());
                     asynDownLoadTask.execute();

@@ -194,7 +194,27 @@ public class MainActivity extends BaseActivity {
                     String imgAddress_temp = null;
                     SharedPreferences pref = getSharedPreferences(MyApplication.SETTING_NAME,MODE_PRIVATE);
                     boolean isLoadImage = pref.getBoolean(MyApplication.ISIMAGELOAD,true);
-                    if(isLoadImage){
+                    boolean noPicSmart = pref.getBoolean(MyApplication.NOPICSMART,false);
+                    boolean loadImage = true;
+
+                    if(!isLoadImage){
+                        if(noPicSmart){
+                            int netState = NetState.getNetState();
+                            switch (netState){
+                                case MyApplication.WIFI_CONNECT:
+                                    loadImage = true;
+                                    break;
+                                case MyApplication.MONET_CONNECT:
+                                    loadImage = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }else {
+                            loadImage = false;
+                        }
+                    }
+                    if(loadImage){
                         imgAddress_temp = imgAddress[i];
                     }
                     final String imgAddress_item = imgAddress_temp;
@@ -321,5 +341,26 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         slider.startAutoCycle();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("确认退出？");
+        builder.setMessage("请确认退出");
+        builder.setCancelable(false);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ActivityCollector.finishAll();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
 }

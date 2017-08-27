@@ -279,11 +279,33 @@ public class HttpGet {
 
                     SharedPreferences pref = MyApplication.getContext().getSharedPreferences
                             (MyApplication.SETTING_NAME, Context.MODE_PRIVATE);
+                    //isLoadImage为true表示加载图标，false表示不加载图片
+                    //isLoadImage为false即不加载图片
                     boolean isLoadImage = pref.getBoolean(MyApplication.ISIMAGELOAD,true);
+                    boolean noPicSmart = pref.getBoolean(MyApplication.NOPICSMART,false);
+                    boolean loadImage = true;
+
+                    if(!isLoadImage){
+                        if(noPicSmart){
+                            int netState = NetState.getNetState();
+                            switch (netState){
+                                case MyApplication.WIFI_CONNECT:
+                                    loadImage = true;
+                                    break;
+                                case MyApplication.MONET_CONNECT:
+                                    loadImage = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }else {
+                            loadImage = false;
+                        }
+                    }
 
                     int reqHeight = 0;
 
-                    if(isLoadImage){
+                    if(loadImage){
                         reqHeight = mWidth*loadedImage.getHeight()/loadedImage.getWidth();
                     };
 
