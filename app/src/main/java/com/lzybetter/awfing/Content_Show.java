@@ -1,5 +1,6 @@
 package com.lzybetter.awfing;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
@@ -306,8 +308,28 @@ public class Content_Show extends BaseActivity {
                 share_intent.putExtra("imgAddress",imgAddress);
                 startActivity(share_intent);
                 break;
+            case R.id.content_exit:
+                AlertDialog.Builder builder = new AlertDialog.Builder(Content_Show.this);
+                builder.setTitle("确认退出？");
+                builder.setMessage("请确认退出");
+                builder.setCancelable(false);
+                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ActivityCollector.finishAll();
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder.show();
+                break;
             case android.R.id.home:
                 back_btn("1");
+                break;
             default:
                 break;
         }
