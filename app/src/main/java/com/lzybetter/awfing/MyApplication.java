@@ -2,8 +2,10 @@ package com.lzybetter.awfing;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
+import android.support.v7.app.AlertDialog;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -59,6 +61,26 @@ public class MyApplication extends Application {
 
     public static LruCache<String, Bitmap> getmMemoryCaches() {
         return mMemoryCaches;
+    }
+
+    public static void allExit(Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("确认退出？");
+        builder.setMessage("请确认退出");
+        builder.setCancelable(false);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ActivityCollector.finishAll();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
 
 }

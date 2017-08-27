@@ -16,4 +16,10 @@
         app:showAsAction="always">
     </item>
 
+    <item
+        android:id="@+id/Btn_exit"
+        android:icon="@drawable/ic_exit_content"
+        android:title="退出"
+        app:showAsAction="never">
+    </item>
 </menu>

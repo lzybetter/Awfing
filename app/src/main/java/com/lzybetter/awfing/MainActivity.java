@@ -151,23 +151,7 @@ public class MainActivity extends BaseActivity {
                         finish();
                         break;
                     case R.id.nav_exit:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setTitle("确认退出？");
-                        builder.setMessage("请确认退出");
-                        builder.setCancelable(false);
-                        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCollector.finishAll();
-                            }
-                        });
-                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        });
-                        builder.show();
+                        MyApplication.allExit(MainActivity.this);
                         break;
                     default:
                         break;
@@ -345,22 +329,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("确认退出？");
-        builder.setMessage("请确认退出");
-        builder.setCancelable(false);
-        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ActivityCollector.finishAll();
-            }
-        });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        builder.show();
+        MyApplication.allExit(this);
     }
 }

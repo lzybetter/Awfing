@@ -314,7 +314,7 @@ public class Choose_List extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar,menu);
+        getMenuInflater().inflate(R.menu.list_toolbar,menu);
         return true;
     }
 
@@ -330,6 +330,9 @@ public class Choose_List extends BaseActivity {
                     int position = random.nextInt(totalItemNumber);
                     browseListView(position);
                 }
+                break;
+            case R.id.Btn_exit:
+                MyApplication.allExit(this);
                 break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
