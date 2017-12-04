@@ -188,6 +188,14 @@ public class HttpGet {
         return pageNumber;
     }
 
+    public static String getTitle(String response){
+        Document doc = Jsoup.parse(response);
+        Elements elements = doc.select("div.news_content");
+        Elements title = elements.get(0).select("h1");
+        String titleString = title.text();
+        return titleString;
+    }
+
     public static String[] getPageLink(String response,String[] pageNumber){
         String currentPageNumber = pageNumber[0];
         String totalPageNumber = pageNumber[1];

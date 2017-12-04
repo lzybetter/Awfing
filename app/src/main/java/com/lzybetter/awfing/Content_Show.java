@@ -102,7 +102,6 @@ public class Content_Show extends BaseActivity {
     private void init() {
 
         Intent intent = getIntent();
-        title = intent.getStringExtra("title");
         String link = intent.getStringExtra("link");
         String imgAddress = intent.getStringExtra("imgAddress");
 
@@ -174,7 +173,8 @@ public class Content_Show extends BaseActivity {
         pageNumber = HttpGet.getPageNumber(response);
         String currentPageNumber = pageNumber[0];
         String titlePageNumber = pageNumber[1];
-        String title = this.title + "(" + currentPageNumber + "/"
+        String title = HttpGet.getTitle(response);
+        title = title + "(" + currentPageNumber + "/"
                 + titlePageNumber + ")";
         title_show.setText(title);
     }
